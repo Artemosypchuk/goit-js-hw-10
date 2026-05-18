@@ -16,6 +16,7 @@ const secondsVal = document.querySelector("[data-seconds]");
 let userSelectedDate = null;
 let timerId = null;
 
+startBtn.disabled = true;
 
 const options = {
   enableTime: true,
@@ -24,7 +25,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     const selectedDate = selectedDates[0];
-    if (selectedDate < new Date()) {
+    if (selectedDate <= new Date()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',

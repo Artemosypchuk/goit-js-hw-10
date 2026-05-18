@@ -6,7 +6,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 
 const snackForm = document.querySelector('.form');
-const formInput = document.querySelector('.form input');
+const formInput = document.querySelector('#delay');
 
 snackForm.addEventListener('submit',(event)=>{
     event.preventDefault();
@@ -14,13 +14,15 @@ snackForm.addEventListener('submit',(event)=>{
     const inputedState = event.currentTarget.elements.state.value;
     createPromise(inputedDelay,inputedState).then(delay =>{
         iziToast.success({ 
-            message: `Fulfilled promise in ${delay} ms`
+            message: `✅ Fulfilled promise in ${delay}ms`
          });
     }).catch(delay =>{
         iziToast.error({ 
-            message: `Rejected promise in ${delay} ms`
+            message: `❌ Rejected promise in ${delay}ms`
          });
-    }).finally(snackForm.reset());
+    }).finally(()=>{
+        snackForm.reset();
+    });
 });
 
 function createPromise(delay,state){
