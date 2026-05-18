@@ -14,11 +14,11 @@ snackForm.addEventListener('submit',(event)=>{
     const inputedState = event.currentTarget.elements.state.value;
     createPromise(inputedDelay,inputedState).then(delay =>{
         iziToast.success({ 
-            message: `✅ Fulfilled promise in ${delay}ms`
+            message: `Fulfilled promise in ${delay}ms`
          });
     }).catch(delay =>{
         iziToast.error({ 
-            message: `❌ Rejected promise in ${delay}ms`
+            message: `Rejected promise in ${delay}ms`
          });
     }).finally(()=>{
         snackForm.reset();
